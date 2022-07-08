@@ -11,14 +11,14 @@ public class data
     private string apodo = "";
     private DateTime fechaNacimiento;
     private int edad;
-    private int salud;
+    private double salud;
 
     public string Tipo { get => tipo; set => tipo = value; }
     public string Nombre { get => nombre; set => nombre = value; }
     public string Apodo { get => apodo; set => apodo = value; }
     public DateTime FechaNacimiento { get => fechaNacimiento; set => fechaNacimiento = value; }
     public int Edad { get => edad; set => edad = value; }
-    public int Salud { get => salud; set => salud = value; }
+    public double Salud { get => salud; set => salud = value; }
 
     string[] ArregloNombres = new string[] { "V1", "DuskDude", "DoomGuy", "Duke Nukem", "Jacket", "Gordon Freeman" };
     string[] ArregloTipo = new string[] { "Cientifico", "Maquina", "Asesino", "Infernal" };
@@ -27,7 +27,7 @@ public class data
     public data()
     {
         Random rand = new Random();
-        int aux = rand.Next(0, 5);
+        int aux = rand.Next(0, 6);
         this.Nombre = ArregloNombres[aux];
 
         switch (aux)
@@ -45,7 +45,7 @@ public class data
                 this.Tipo = ArregloTipo[3];
                 break;
             case 3:
-                this.Apodo = ArregloApodos[2];
+                this.Apodo = ArregloApodos[5];
                 this.Tipo = ArregloTipo[2];
                 break;
             case 4:
@@ -59,7 +59,7 @@ public class data
 
         }
 
-        this.FechaNacimiento = new DateTime(rand.Next(1900, 2020), rand.Next(1, 12), rand.Next(1, 28));
+        this.FechaNacimiento = new DateTime(rand.Next(1900, 2021), rand.Next(1, 13), rand.Next(1, 29));
         this.Salud = 100;
         this.Edad = ObtenerEdad(fechaNacimiento);
 

@@ -19,11 +19,11 @@ public class valores
 
     public valores() { 
         Random random = new Random();
-        this.Velocidad = random.Next(1, 10);
-        this.Fuerza = random.Next(1, 10);
-        this.Nivel = random.Next(1, 10);
-        this.Armadura = random.Next(1, 10);
-        this.Destreza = random.Next(1, 5);
+        this.Velocidad = random.Next(1, 11);
+        this.Fuerza = random.Next(1, 11);
+        this.Nivel = random.Next(1, 11);
+        this.Armadura = random.Next(1, 11);
+        this.Destreza = random.Next(1, 6);
 
     }
 }
