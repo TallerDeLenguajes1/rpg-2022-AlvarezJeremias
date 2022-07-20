@@ -246,9 +246,9 @@ class Program
             EscribirGanadorenCSV(peleadores, escritor);
             Console.Write("Desea volver a jugar? [Y/N] : ");
             eleccion = Convert.ToChar(Console.ReadLine());
-
+            
         }
-
+        escritor.Close();
     }
 /*COMENTARIOS PARA EL MEJORAMIENTO PROXIMO DEL JUEGO
  -el proceso de If's,While's y for's necesarios para llevar a cabo las peleas se utiliza mucho, se tendra muy en cuenta convertirlo en una funcion para mejorar el aspecto del codigo.
