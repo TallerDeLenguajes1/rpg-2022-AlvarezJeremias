@@ -6,8 +6,12 @@ class Program
 {
     static void Main(string[] args)
     {
-        int eleccion=Convert.ToInt32(Console.ReadLine());
-        while (eleccion==1)
+        Console.WriteLine("Bienvenido al RPG! Que desea hacer?: \n P) PELEA \n L) LISTADO DE GANADORES (aun en progreso)");
+        int eleccion=Convert.ToChar(Console.ReadLine());
+        string archivo = @"C:\Users\jerem\source\repos\rpg-2022-AlvarezJeremias\RPG-AlvarezJeremias\ganadores.csv";
+        StreamWriter escritor = new StreamWriter(archivo); //abrimos un archivo con la clase StreamWriter para leer o escribir
+        escritor.WriteLine("Nombre, Apodo, Tipo, Victorias"); //Escribimos en el archivo
+        while (eleccion=='y'|| eleccion=='Y' || eleccion=='P' || eleccion=='p')
         {
 
         List <personaje> peleadores=new List<personaje> ();  //se crean las dos listas 
@@ -238,7 +242,11 @@ class Program
             {
                 Console.WriteLine($"\nQuedo el finalista: {PJ.Datos.Nombre}");
             }
-            eleccion = Convert.ToInt32(Console.ReadLine());
+            peleadores[0].Datos.Victorias++;
+            EscribirGanadorenCSV(peleadores, escritor);
+            Console.Write("Desea volver a jugar? [Y/N] : ");
+            eleccion = Convert.ToChar(Console.ReadLine());
+
         }
 
     }
@@ -348,5 +356,11 @@ class Program
 
 
     }
-
+    public static void EscribirGanadorenCSV(List <personaje> listaPeleadores, StreamWriter writer)
+    {
+        if (listaPeleadores[0].Datos.Victorias >=1)
+        {
+            writer.WriteLine($"{listaPeleadores[0].Datos.Nombre},{listaPeleadores[0].Datos.Apodo},{listaPeleadores[0].Datos.Tipo},{listaPeleadores[0].Datos.Victorias}");
+        }
+    }
 }

@@ -12,6 +12,7 @@ public class data
     private DateTime fechaNacimiento;
     private int edad;
     private double salud;
+    private int victorias;
 
     public string Tipo { get => tipo; set => tipo = value; }
     public string Nombre { get => nombre; set => nombre = value; }
@@ -19,6 +20,7 @@ public class data
     public DateTime FechaNacimiento { get => fechaNacimiento; set => fechaNacimiento = value; }
     public int Edad { get => edad; set => edad = value; }
     public double Salud { get => salud; set => salud = value; }
+    public int Victorias { get => victorias; set => victorias = value; }
 
     string[] ArregloNombres = new string[] { "V1", "DuskDude", "DoomGuy", "Duke Nukem", "Jacket", "Gordon Freeman" };
     string[] ArregloTipo = new string[] { "Cientifico", "Maquina", "Asesino", "Infernal" };
