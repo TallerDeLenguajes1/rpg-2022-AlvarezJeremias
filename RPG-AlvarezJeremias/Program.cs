@@ -1,12 +1,13 @@
 ﻿using RPG_AlvarezJeremias;
 using System;
 using System.Collections.Generic;
-
+using System.Text.Json;
+using System.Text.Json.Serialization;
 class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Bienvenido al RPG! Que desea hacer?: \n P) PELEA \n L) LISTADO DE GANADORES (aun en progreso)");
+        Console.WriteLine("\nCuando este listo para jugar, presione la tecla P, luego la tecla ENTER\n");
         int eleccion=Convert.ToChar(Console.ReadLine());
         string archivo = @"C:\Users\jerem\source\repos\rpg-2022-AlvarezJeremias\RPG-AlvarezJeremias\ganadores.csv";
         StreamWriter escritor = new StreamWriter(archivo); //abrimos un archivo con la clase StreamWriter para leer o escribir
@@ -362,5 +363,17 @@ class Program
         {
             writer.WriteLine($"{listaPeleadores[0].Datos.Nombre},{listaPeleadores[0].Datos.Apodo},{listaPeleadores[0].Datos.Tipo},{listaPeleadores[0].Datos.Victorias}");
         }
+    }
+    public static void RegistrarJson (List <personaje> ListaPeleadores)
+    {
+        string route = @"C:\Users\jerem\source\repos\rpg-2022-AlvarezJeremias\RPG-AlvarezJeremias\registroJugadores.json";
+        var opcion = new JsonSerializerOptions { WriteIndented=true};
+        string registro = JsonSerializer.Serialize(ListaPeleadores, opcion);
+        File.WriteAllText(route, registro);
+
+    }
+    public static personaje CrearPjJson ()
+    {
+
     }
 }
