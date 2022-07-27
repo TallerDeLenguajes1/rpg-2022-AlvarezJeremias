@@ -374,6 +374,20 @@ class Program
     }
     public static personaje CrearPjJson ()
     {
-
+        string lector = File.ReadAllText("registroJugadores.json");
+        var deserializer= JsonSerializer.Deserialize<List<personaje>>(lector);
+        if (deserializer!=null)
+        {
+            Random random = new Random();
+            int pjRandomJson= random.Next(0, deserializer.Count);
+            deserializer[pjRandomJson].Datos.Salud = 100;
+            return deserializer[pjRandomJson];
+        }
+        else
+        {
+            Console.WriteLine("No existe registro de personajes anteriores, se creo uno aleatoriamente");
+            personaje pjRandom=new personaje();
+            return pjRandom;
+        }
     }
 }
