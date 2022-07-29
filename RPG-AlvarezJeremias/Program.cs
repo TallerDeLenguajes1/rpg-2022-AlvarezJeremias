@@ -10,12 +10,12 @@ class Program
         Console.WriteLine("\nCuando este listo para jugar, presione la tecla P, luego la tecla ENTER\n");
         int eleccion=Convert.ToChar(Console.ReadLine());
         string archivo = @"C:\Users\jerem\source\repos\rpg-2022-AlvarezJeremias\RPG-AlvarezJeremias\ganadores.csv";
-        StreamWriter escritor = new StreamWriter(archivo); //abrimos un archivo con la clase StreamWriter para leer o escribir
-        escritor.WriteLine("Nombre, Apodo, Tipo, Victorias"); //Escribimos en el archivo
+        StreamWriter escritor = new StreamWriter(archivo); 
+        escritor.WriteLine("Nombre, Apodo, Tipo, Victorias"); 
         while (eleccion=='y'|| eleccion=='Y' || eleccion=='P' || eleccion=='p')
         {
 
-            List <personaje> peleadores=new List<personaje> ();  //se crean las dos listas 
+            List <personaje> peleadores=new List<personaje> ();  
             List<personaje> perdedores = new List<personaje>();
             Console.WriteLine("El primer peleador puede ser aleatorio o puede ser uno de los antiguos participantes:\n 1)Nuevo personaje\n2)Personaje previo");
             Console.Write("Escriba su respuesta: ");
@@ -56,7 +56,7 @@ class Program
             {
 
 
-                Pelea(peleadores, 0, 1);   // se realiza el calculo de combate aleatorio
+                Pelea(peleadores, 0, 1);   
                 i=KO(peleadores,perdedores,luchador1,luchador2,i);  // esta funcion chequea si alguno de los combatientes se quedo sin salud, y devuelve i=5 si asi es, caso contrario devuelve el valor actual de i
                 if (peleadores.Count>1)
                 {
@@ -69,9 +69,9 @@ class Program
 
             }
 
-            if (i<5) // si ambos jugadores aun tienen vida restante..
+            if (i<5) // 
             {
-                if (peleadores[0].Datos.Salud < peleadores[1].Datos.Salud)   // Pierde el que menos salud tenga
+                if (peleadores[0].Datos.Salud < peleadores[1].Datos.Salud)   
                 {
                     perdedores.Add(peleadores[0]);
                     peleadores.RemoveAt(0);
@@ -118,6 +118,7 @@ class Program
             int j;
             if (peleadores.Count == 1)
             {
+                AumentoCaracteristicas(peleadores[0]);
                 Console.WriteLine("\nA continuacion, pelearan otros dos competidores!");
                 peleadores.Add(luchador3);
                 peleadores.Add(luchador4);
@@ -132,7 +133,7 @@ class Program
                 {
 
                     Pelea(peleadores, 1, 2);
-                    i = KO(peleadores, perdedores, luchador3, luchador4, j);
+                    j = KO(peleadores, perdedores, luchador3, luchador4, j);
                     if (peleadores.Count > 1)
                     {
 
@@ -188,6 +189,7 @@ class Program
 
                     }
                 }
+                AumentoCaracteristicas(peleadores[1]);
                 Console.WriteLine("\nsolamente quedan los finalistas!  ellos son: ");
                 Console.WriteLine($"\n\n {peleadores[0].Datos.Nombre} y {peleadores[1].Datos.Nombre}!");
 
@@ -224,7 +226,7 @@ class Program
                         peleadores.RemoveAt(1);
                     }
                 }
-                while (peleadores.Count > 1)  // Si quedan mas de 2 jugadores en la tabla, se siguen peleando los luchadores hasta que desempaten.
+                while (peleadores.Count > 1)  
                 {
                     Console.WriteLine("\nHay que desempatar!");
 
@@ -240,9 +242,9 @@ class Program
                             x = KO(peleadores, perdedores, peleadores[1], peleadores[0], x);
                         }
                     }
-                    if (x < 5) // si ambos jugadores aun tienen vida restante..
+                    if (x < 5) 
                     {
-                        if (peleadores[0].Datos.Salud < peleadores[1].Datos.Salud)   // Pierde el que menos salud tenga
+                        if (peleadores[0].Datos.Salud < peleadores[1].Datos.Salud)   
                         {
                             perdedores.Add(peleadores[0]);
                             peleadores.RemoveAt(0);
@@ -259,6 +261,7 @@ class Program
                 foreach (personaje PJ in peleadores)
                 {
                     Console.WriteLine($"\nQuedo el finalista: {PJ.Datos.Nombre}");
+                Console.WriteLine($"{PJ.Datos.Nombre} quiere decirles algo: {PJ.Datos.Bardo}");
                 }
                 peleadores[0].Datos.Victorias++;
                 EscribirGanadorenCSV(peleadores, escritor);
@@ -329,6 +332,10 @@ class Program
     public static int KO (List<personaje> listaPeleadores, List<personaje>listaPerdedores, personaje PJ1, personaje PJ2, int opcion)
     {
         if (PJ1.Datos.Salud<=0){
+            if (PJ1.Datos.Salud<0)
+            {
+                PJ1.Datos.Salud = 0;
+            }
             listaPerdedores.Add(PJ1);
             listaPeleadores.Remove(PJ1);
             return 5;
@@ -336,6 +343,10 @@ class Program
         {
             if (PJ2.Datos.Salud<=0)
             {
+                if (PJ2.Datos.Salud < 0)
+                {
+                    PJ2.Datos.Salud = 0;
+                }
                 listaPerdedores.Add(PJ2);
                 listaPeleadores.Remove(PJ2);
                 return 5;
@@ -346,7 +357,7 @@ class Program
     public static void  AumentoCaracteristicas (personaje PJ)
     {
         int opcion=0;
-        while (opcion != 1 || opcion!=2 || opcion !=3) 
+        while (opcion != 1 && opcion!=2 && opcion !=3) 
         {
             Console.WriteLine("El ganador sera premiado con un bonus de una caracteristica a eleccion!");
             Console.WriteLine("Elija cual sera la bonificacion que se llevara a cabo: \nOpcion 1: +10 Salud\nOpcion 2: +2 Fuerza.\nOpcion 3: +2 Armadura. ");
@@ -391,7 +402,7 @@ class Program
     }
     public static personaje CrearPjJson ()
     {
-        string lector = File.ReadAllText("registroJugadores.json");
+        string lector = File.ReadAllText(@"C:\Users\jerem\source\repos\rpg-2022-AlvarezJeremias\RPG-AlvarezJeremias\registroJugadores.json");
         var deserializer= JsonSerializer.Deserialize<List<personaje>>(lector);
         if (deserializer!=null)
         {

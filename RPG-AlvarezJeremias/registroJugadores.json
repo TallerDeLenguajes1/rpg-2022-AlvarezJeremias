@@ -1,3 +1,78 @@
-{
-
-}
+[
+  {
+    "Caracteristicas": {
+      "Velocidad": 2,
+      "Fuerza": 1,
+      "Destreza": 1,
+      "Armadura": 9,
+      "Nivel": 7
+    },
+    "Datos": {
+      "Tipo": "Maquina",
+      "Nombre": "V1",
+      "Apodo": "Blood Machine",
+      "FechaNacimiento": "1929-08-15T00:00:00",
+      "Edad": 92,
+      "Salud": 100,
+      "Victorias": 0,
+      "Bardo": "Who do you think is the best comedy team? ME? I think it\u0027s your parents....they made the biggest joke!"
+    }
+  },
+  {
+    "Caracteristicas": {
+      "Velocidad": 9,
+      "Fuerza": 9,
+      "Destreza": 5,
+      "Armadura": 10,
+      "Nivel": 3
+    },
+    "Datos": {
+      "Tipo": "Infernal",
+      "Nombre": "DuskDude",
+      "Apodo": "Intruder",
+      "FechaNacimiento": "2009-04-07T00:00:00",
+      "Edad": 13,
+      "Salud": 100,
+      "Victorias": 0,
+      "Bardo": "Who do you think is the best comedy team? ME? I think it\u0027s your parents....they made the biggest joke!"
+    }
+  },
+  {
+    "Caracteristicas": {
+      "Velocidad": 9,
+      "Fuerza": 10,
+      "Destreza": 3,
+      "Armadura": 9,
+      "Nivel": 6
+    },
+    "Datos": {
+      "Tipo": "Infernal",
+      "Nombre": "DuskDude",
+      "Apodo": "Intruder",
+      "FechaNacimiento": "1976-08-18T00:00:00",
+      "Edad": 45,
+      "Salud": 100,
+      "Victorias": 0,
+      "Bardo": "Who do you think is the best comedy team? ME? I think it\u0027s your parents....they made the biggest joke!"
+    }
+  },
+  {
+    "Caracteristicas": {
+      "Velocidad": 2,
+      "Fuerza": 2,
+      "Destreza": 5,
+      "Armadura": 4,
+      "Nivel": 9
+    },
+    "Datos": {
+      "Tipo": "Asesino",
+      "Nombre": "Jacket",
+      "Apodo": "El Elegido",
+      "FechaNacimiento": "1955-06-15T00:00:00",
+      "Edad": 67,
+      "Salud": 100,
+      "Victorias": 0,
+      "Bardo": "Who do you think is the best comedy team? ME? I think it\u0027s your parents....they made the biggest joke!"
+    }
+  }
+]
